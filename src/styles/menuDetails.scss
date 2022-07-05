@@ -1,0 +1,61 @@
+/**
+ * menuDetails
+ */
+
+.details {
+  padding-top: 60px;
+  color: white;
+  &__container {
+    display: flex;
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 240px;
+  }
+
+  &__img {
+    width: 300px;
+    height: 300px;
+    margin-right: 72px;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    width: 600px;
+  }
+
+  &__title {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+
+  &__description {
+    margin-bottom: 32px;
+  }
+
+  &__price {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  &__quantity {
+    margin-right: 20px;
+  }
+
+  &__select {
+    width: 100px;
+    height: 34px;
+    text-align: center;
+    margin-right: 16px;
+  }
+
+  &__cart-add {
+    width: 160px;
+    height: 34px;
+    background: red;
+    color: white;
+    border: none;
+  }
+}
