@@ -1,0 +1,22 @@
+/**
+ * swiper
+ */
+
+.slide {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 60px;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__pagination {
+    margin-bottom: 20px;
+  }
+}
+
+.hooper {
+  height: 70%;
+}

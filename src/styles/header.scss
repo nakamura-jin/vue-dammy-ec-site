@@ -3,9 +3,11 @@
  */
 
 .header {
+  position: fixed;
   width: 100%;
   height: 56px;
   background: red;
+  z-index: 100;
 
   &__container {
     display: flex;
