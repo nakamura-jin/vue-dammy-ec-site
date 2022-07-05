@@ -5,14 +5,16 @@ export default {
    * state
    ******************************************/
   state: {
-    menus: []
+    menus: [],
+    details: {}
   },
 
   /******************************************
    * getters
    ******************************************/
   getters: {
-    menus:(state) => state.menus
+    menus: (state) => state.menus,
+    details: (state) => state.details
   },
 
   /******************************************
@@ -21,6 +23,10 @@ export default {
   mutations: {
     MENUS(state, menus) {
       state.menus = menus
+    },
+
+    DETAILS(state, menu) {
+      state.details = menu
     }
   },
 
@@ -30,6 +36,10 @@ export default {
   actions: {
     menus({ commit }, menus) {
       commit('MENUS', menus)
+    },
+
+    details({ commit }, menu) {
+      commit('DETAILS', menu)
     }
   },
 };

@@ -6,7 +6,7 @@
     <div class="home__container">
       <swiper />
       <div class="home__menu-list">
-        <div class="card" v-for="menu in menus" :key="menu.id" @click="$router.push(`/menu/${menu.id}`)">
+        <div class="card" v-for="menu in menus" :key="menu.id" @click="menuDetails(menu)">
           <div class="card__img">
             <img :src="menu.image" alt="">
           </div>
@@ -56,7 +56,6 @@ export default {
 
   computed: {
     menus() {
-      console.log(this.$store.getters['menus/menus'])
       return this.$store.getters['menus/menus']
     }
   },
@@ -69,6 +68,12 @@ export default {
       const response = await $http.get('menus')
       this.$store.dispatch('menus/menus', response.data.menus)
     },
+
+    menuDetails(menu) {
+      this.$store.dispatch('menus/details', menu)
+      this.$router.push(`/menu/${menu.id}`)
+    },
+
     add(id) {
       console.log(id)
     }
