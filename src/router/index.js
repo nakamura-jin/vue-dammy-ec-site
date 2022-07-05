@@ -12,8 +12,12 @@ const routes = [
       {
         path: '/',
         name: 'Home',
-        // component: Home,
         component: () => import(/* webpackChankName "Home" */ '../views/Home.vue') ,
+      },
+      {
+        path: '/menu/{id}',
+        name: 'MenuDetails',
+        component: () => import(/* webpackChankName "MenuDetails" */ '../views/MenuDetails.vue') ,
       },
     ],
   },
