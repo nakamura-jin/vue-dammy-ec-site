@@ -17,12 +17,17 @@ const routes = [
       {
         path: '/menu',
         name: 'Menu',
-        component: () => import(/* webpackChankName "Menu" */ '../views/Menu.vue') ,
+        component: () => import(/* webpackChankName "Menu" */ '../views/Menu/Menu.vue') ,
       },
       {
         path: '/menu/:id',
         name: 'MenuDetails',
-        component: () => import(/* webpackChankName "MenuDetails" */ '../views/MenuDetails.vue') ,
+        component: () => import(/* webpackChankName "MenuDetails" */ '../views/Menu/MenuDetails.vue') ,
+      },
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import(/* webpackChankName "Login" */ '../views/Login/Login.vue') ,
       },
     ],
   },

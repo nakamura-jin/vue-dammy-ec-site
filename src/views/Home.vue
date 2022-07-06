@@ -36,7 +36,7 @@
 
 <script>
 import $http from '@/services/httpService'
-import Swiper from '@/components/Swiper.vue'
+import Swiper from '@/components/Swiper/Swiper.vue'
 
 export default {
   components: {
