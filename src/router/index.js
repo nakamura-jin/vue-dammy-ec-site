@@ -15,6 +15,11 @@ const routes = [
         component: () => import(/* webpackChankName "Home" */ '../views/Home.vue') ,
       },
       {
+        path: '/menu',
+        name: 'Menu',
+        component: () => import(/* webpackChankName "Menu" */ '../views/Menu.vue') ,
+      },
+      {
         path: '/menu/:id',
         name: 'MenuDetails',
         component: () => import(/* webpackChankName "MenuDetails" */ '../views/MenuDetails.vue') ,
