@@ -5,7 +5,7 @@
   <div class="home">
     <div class="home__container">
       <swiper />
-      <div class="home__menu-list">
+      <!-- <div class="home__menu-list">
         <div class="card" v-for="menu in menus" :key="menu.id" @click="menuDetails(menu)">
           <div class="card__img">
             <img :src="menu.image" alt="">
@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
