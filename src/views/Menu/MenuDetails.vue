@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-  @use '@/styles/menuDetails.scss';
+  @use './menuDetails.scss';
 </style>
 <template>
   <div class="details">

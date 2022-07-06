@@ -1,5 +1,5 @@
 <style lang="scss" scoped>
-  @use '@/styles/swiper.scss';
+  @use './swiper.scss';
 </style>
 <template>
   <div class="slide">
