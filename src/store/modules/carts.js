@@ -19,17 +19,17 @@ export default {
    * mutations
    ******************************************/
   mutations: {
-    CARTS(state, carts) {
-      state.carts = carts;
-    },
+    CARTS(state, menu) {
+      state.carts = menu
+    }
   },
 
   /******************************************
    * actions
    ******************************************/
   actions: {
-    carts({ commit }, carts) {
-      commit('CARTS', carts);
+    carts({ commit }, menu) {
+      commit('CARTS', menu);
     },
   },
 };

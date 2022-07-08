@@ -5,26 +5,15 @@
 <template>
   <div class="menu">
     <div class="menu__container">
-      <div class="card" v-for="menu in menus" :key="menu.id" @click="menuDetails(menu)">
-        <div class="card__img">
+      <div class="menu__card" v-for="(menu, index) in menus" :key="index" @click="menuDetails(menu)" @mouseover="open(index)" @mouseleave="close()">
+        <div class="menu__img">
           <img :src="menu.image" alt="">
         </div>
-        <div class="card__wrapper">
-          <h3 class="card__title">{{ menu.name }}</h3>
-          <span class="card__genre">{{ menu.genre }}</span>
-          <p class="card__price">{{ menu.price }}円</p>
-          <div class="card__order">
-            <button class="card__cart-add" @click="add(menu.id)" @click.stop><font-awesome-icon class="card__icon" icon="fa-solid fa-cart-shopping" />カートに追加</button>
-            <div class="card__quantity">
-            <span>数量: </span>
-              <select @click.stop>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
+
+        <div class="menu__content" :class="{ 'up' : index === hover_index }">
+          <div class="menu__inner" v-if="index === hover_index">
+            <p class="menu__title">{{ menu.name }}</p>
+            <p class="menu__price">{{ menu.price }} 円</p>
           </div>
         </div>
       </div>
@@ -34,8 +23,13 @@
 
 <script>
 import $http from '@/services/httpService'
-import RequiredLoginModal from '@/components/Modals/RequiredLoginModal.vue'
+
 export default {
+  data() {
+    return {
+      hover_index: null
+    }
+  },
   /******************************************
    * created
    ******************************************/
@@ -68,13 +62,12 @@ export default {
       this.$router.push(`/menu/${menu.id}`)
     },
 
-    add(id) {
-      const loggedIn = this.$store.getters['loggedIn']
-      if(!loggedIn) {
-        this.$store.dispatch('modals/modal', true)
-        this.$store.dispatch('modals/selectModal', RequiredLoginModal)
-      }
-      console.log(id)
+    open(index) {
+      this.hover_index = index
+    },
+
+    close() {
+      this.hover_index = null
     }
   }
 }

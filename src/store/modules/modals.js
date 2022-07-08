@@ -1,4 +1,5 @@
 // import RequiredLoginModal from '@/components/Modals/RequiredLoginModal.vue';
+import AddCart from '@/components/Modals/AddCart.vue';
 
 export default {
   namespaced: true,
@@ -7,8 +8,9 @@ export default {
    * state
    ******************************************/
   state: {
-    modal: false,
-    selectModal: '',
+    modal: true,
+    // selectModal: '',
+    selectModal: AddCart,
   },
 
   /******************************************
