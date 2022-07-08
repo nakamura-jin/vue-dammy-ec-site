@@ -33,8 +33,8 @@ class authService {
   }
 
   logout() {
-    const data = this.STORAGE.removeItem('data');
-    return data
+    this.STORAGE.removeItem('data');
+    Store.dispatch('loggedIn', false);
   }
 
   async success(authData) {

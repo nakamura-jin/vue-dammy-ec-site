@@ -1,0 +1,27 @@
+/**
+ * requiredLoginModal
+ */
+.login-modal {
+  width: 100%;
+  text-align: center;
+  p {
+    margin: 40px 0;
+    font-size: 20px;
+  }
+
+  &__login-button {
+    background: red;
+  }
+
+  &__register-button {
+    background: limegreen;
+  }
+}
+
+button {
+  width: 70%;
+  height: 60px;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
