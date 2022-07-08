@@ -34,6 +34,7 @@
 
 <script>
 import $http from '@/services/httpService'
+import RequiredLoginModal from '@/components/Modals/RequiredLoginModal.vue'
 export default {
   /******************************************
    * created
@@ -68,6 +69,11 @@ export default {
     },
 
     add(id) {
+      const loggedIn = this.$store.getters['loggedIn']
+      if(!loggedIn) {
+        this.$store.dispatch('modals/modal', true)
+        this.$store.dispatch('modals/selectModal', RequiredLoginModal)
+      }
       console.log(id)
     }
   }
