@@ -16,6 +16,16 @@
     font-size: 24px;
     color: white;
   }
+
+  &__order {
+    width: 100%;
+    height: 60px;
+    margin-top: 60px;
+    background: red;
+    font-size: 20px;
+    color: white;
+    border: none;
+  }
 }
 
 .card {
@@ -28,6 +38,11 @@
   }
   &:nth-child(n + 4) {
     margin-top: 20px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &__img {

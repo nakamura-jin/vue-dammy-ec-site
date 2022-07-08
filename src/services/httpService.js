@@ -8,16 +8,16 @@ class httpService {
   }
 
   get(uri, params) {
-    return this.$http.get(`${uri}`, { params: params })
+    return this.$http.get(`${uri}`, params)
   }
   post(uri, params) {
-    return this.$http.post(`${uri}`, { params: params })
+    return this.$http.post(`${uri}`, params)
   }
   put(uri, params) {
-    return this.$http.put(`${uri}`, { params: params })
+    return this.$http.put(`${uri}`, params)
   }
   delete(uri, params) {
-    return this.$http.delete(`${uri}`, { params: params })
+    return this.$http.delete(`${uri}`, params)
   }
 }
 
