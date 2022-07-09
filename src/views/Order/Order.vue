@@ -26,7 +26,7 @@
               <p class="order__menu-name">{{ cart.name }}</p>
               <p class="order__menu-price">{{ cart.price }} 円</p>
             </div>
-            <div class="order__quantity">
+            <div class="order__quantity" :value="cart.quantity" @change="changeQuantity($event, cart)">
               <select :value="cart.quantity">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -36,7 +36,7 @@
               </select>
             </div>
             <div class="order__delete">
-              <button><font-awesome-icon icon="fa-solid fa-xmark" /></button>
+              <button @click="deleteCart(cart.cart_id)"><font-awesome-icon icon="fa-solid fa-xmark" /></button>
             </div>
           </div>
         </div>
@@ -54,8 +54,10 @@
 
 <script>
 import $http from '@/services/httpService'
+import cartMixin from '@/mixins/cartMixin'
 
 export default {
+  mixins: [ cartMixin ],
   data() {
     return {
       id: Number(JSON.parse(sessionStorage.getItem('data')).user),
@@ -75,10 +77,6 @@ export default {
    ******************************************/
 
   computed: {
-    carts() {
-      return this.$store.getters['carts/carts']
-    },
-
     total() {
       let totalPrice = 0
       const cart = this.carts
@@ -102,24 +100,8 @@ export default {
     async getData() {
       const response = await $http.get(`user/${this.id}`)
       this.user = response.data.user
-      this.getCart()
-    },
-    /**
-     * カートの商品有無確認 無ければDBから取得
-     */
-    async getCart() {
-      if(this.carts.length > 0) return
 
-      const response = await $http.get(`/cart/${this.id}`)
-      const cart = response.data.cart
-
-      // メニューに数量追加してstoreへ保存
-      const menus = [];
-      for(let i = 0; i < cart.length; i++) {
-        cart[i].menu[0]['quantity'] = cart[i].quantity
-        menus.push(cart[i].menu[0])
-      }
-      this.$store.dispatch('carts/carts', menus)
+      if(this.carts.length === 0) this.getCart()
     }
   }
 }
