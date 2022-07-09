@@ -39,7 +39,12 @@ const routes = [
         path: 'cart/:id',
         name: 'Cart',
         component: () => import(/* webpackChankName "Cart" */ '../views/Cart/Cart.vue')
-      }
+      },
+      {
+        path: 'order',
+        name: 'Order',
+        component: () => import(/* webpackChankName "Order" */ '../views/Order/Order.vue')
+      },
     ],
   },
 ];
