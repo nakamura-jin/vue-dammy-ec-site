@@ -15,7 +15,7 @@
             <span class="card__genre">{{ cart.genre }}</span>
             <p class="card__price">{{ cart.price }}円</p>
             <div class="card__order">
-              <button class="card__cart-add" @click="add(cart.id)" @click.stop><font-awesome-icon class="card__icon" icon="fa-solid fa-cart-shopping" />カートから削除</button>
+              <button class="card__cart-delete" @click="deleteCart(cart.cart_id)" @click.stop><font-awesome-icon class="card__icon" icon="fa-solid fa-cart-shopping" />カートから削除</button>
               <div class="card__quantity">
               <span>数量: </span>
                 <select @click.stop :value="cart.quantity" @change="changeQuantity($event, cart)">
@@ -36,14 +36,10 @@
 </template>
 
 <script>
-import $http from '@/services/httpService'
+import cartMixin from '@/mixins/cartMixin'
 
 export default {
-  data(){
-    return {
-      quantity: 1
-    }
-  },
+  mixins: [ cartMixin ],
 
   /******************************************
    * created
@@ -51,35 +47,5 @@ export default {
   created() {
     this.getCart()
   },
-  /******************************************
-   * computed
-   ******************************************/
-  computed: {
-    carts() {
-      return this.$store.getters['carts/carts']
-    }
-  },
-  /******************************************
-   * methods
-   ******************************************/
-  methods: {
-    async getCart() {
-      const id = Number(this.$route.params.id)
-      const response = await $http.get(`/cart/${id}`)
-      const carts = response.data.cart
-
-      const menus = [];
-      for(let i = 0; i < carts.length; i++) {
-        carts[i].menu[0]['quantity'] = carts[i].quantity
-        menus.push(carts[i].menu[0])
-      }
-      this.$store.dispatch('carts/carts', menus)
-    },
-
-    changeQuantity(e, cart) {
-      this.quantity = Number(e.target.value)
-      console.log(this.quantity, cart)
-    }
-  }
 }
 </script>
