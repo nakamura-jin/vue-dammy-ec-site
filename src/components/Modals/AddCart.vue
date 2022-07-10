@@ -5,7 +5,7 @@
   <div class="add-cart">
     <div class="add-cart__container">
       <h3 class="add-cart__title">カートに追加いたしました</h3>
-      <button class="add-cart__btn">注文画面へすすむ</button>
+      <button class="add-cart__btn" @click="goToOrder">注文画面へすすむ</button>
       <button class="add-cart__btn" @click="goToMenu">メニュー画面へ</button>
       <button class="add-cart__btn" @click="goToCart">カート画面へ</button>
     </div>
@@ -19,6 +19,11 @@ export default {
    ******************************************/
 
   methods: {
+    goToOrder() {
+      this.$router.push('/order')
+      this.$store.dispatch('modals/modal', false)
+      this.$store.dispatch('modals/selectModal', '')
+    },
     goToMenu() {
       this.$router.push('/menu')
       this.$store.dispatch('modals/modal', false)

@@ -5,6 +5,16 @@
   <div class="home">
     <div class="home__container">
       <swiper />
+      <div class="home__category">
+        <h3 class="home__category-title">カテゴリー</h3>
+        <div class="home__category-list">
+          <button class="home__category-button" :value="1" :class="{'active' : hover_index && index_value === 1}" @mouseover="onAction($event)" @mouseleave="leaveAction">肉料理</button>
+          <button class="home__category-button" :value="2" :class="{'active' : hover_index && index_value === 2}" @mouseover="onAction($event)" @mouseleave="leaveAction">揚げ物</button>
+          <button class="home__category-button" :value="3" :class="{'active' : hover_index && index_value === 3}" @mouseover="onAction($event)" @mouseleave="leaveAction">野菜料理</button>
+          <button class="home__category-button" :value="4" :class="{'active' : hover_index && index_value === 4}" @mouseover="onAction($event)" @mouseleave="leaveAction">定番おつまみ</button>
+          <button class="home__category-button" :value="5" :class="{'active' : hover_index && index_value === 5}" @mouseover="onAction($event)" @mouseleave="leaveAction">ごはんもの</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -16,6 +26,13 @@ import Swiper from '@/components/Swiper/Swiper.vue'
 export default {
   components: {
     Swiper
+  },
+
+  data() {
+    return {
+      hover_index: false,
+      index_value: null
+    }
   },
   /******************************************
    * created
@@ -44,14 +61,16 @@ export default {
       this.$store.dispatch('menus/menus', response.data.menus)
     },
 
-    menuDetails(menu) {
-      this.$store.dispatch('menus/details', menu)
-      this.$router.push(`/menu/${menu.id}`)
+    onAction(e) {
+      this.hover_index = true
+      this.index_value = Number(e.target.value)
     },
 
-    add(id) {
-      console.log(id)
+    leaveAction() {
+      this.hover_index = false
+      this.index_value = null
     }
+
   }
 }
 </script>
