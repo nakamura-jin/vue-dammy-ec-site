@@ -4,7 +4,7 @@
 <template>
   <div class="order">
     <div class="order__container">
-      <div class="order__info">
+      <div class="order__info" v-if="carts.length > 0">
         <h3 class="order__user-title">お客様情報</h3>
         <div class="order__user-text">
           <div class="order__user-name">
@@ -45,9 +45,14 @@
             <p>合計 :</p>
             <p>{{ total | numberFormat(total) }} 円</p>
           </div>
-          <button class="order__decision">確定する</button>
+          <button class="order__decision" @click="order">確定する</button>
         </div>
       </div>
+      <template v-else>
+        <div class="order__no-cart">
+          <p>カートに保存されていません</p>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -102,6 +107,29 @@ export default {
       this.user = response.data.user
 
       if(this.carts.length === 0) this.getCart()
+    },
+
+    async order() {
+      const carts = this.carts
+      // menu_id, quantity, cart_idを配列にしてPOSTする
+      const menu_id = [];
+      const quantity = [];
+      const cart_id = [];
+      for(let i in carts) {
+        menu_id.push(carts[i].id)
+        quantity.push(carts[i].quantity)
+        cart_id.push(carts[i].cart_id)
+      }
+
+      const query = {}
+      query['user_id'] = this.user.id
+      query['menu_id'] = menu_id
+      query['quantity'] = quantity
+      query['cart_id'] = cart_id
+      query['payment_flag'] = 1
+
+      await $http.post('order', query)
+      this.$store.dispatch('carts/allDelete')
     }
   }
 }

@@ -33,7 +33,6 @@
             <div class="menu__inner" v-if="index === hover_index">
               <p class="menu__title">{{ menu.name }}</p>
               <p class="menu__price">{{ menu.price }} 円</p>
-              <p>{{ menu.genre }}</p>
             </div>
           </div>
         </div>

@@ -31,12 +31,13 @@
 <script>
 import $http from '@/services/httpService'
 import AddCart from '@/components/Modals/AddCart.vue'
+import RequiredLoginModal from '@/components/Modals/RequiredLoginModal.vue'
 
 export default {
   data() {
     return {
       quantity: 1,
-      user_id: Number(JSON.parse(sessionStorage.getItem('data')).user)
+      user_id: null
     }
   },
 
@@ -86,6 +87,14 @@ export default {
     },
 
     async add(id) {
+      const user = JSON.parse(sessionStorage.getItem('data'))
+      if(!user) {
+        this.$store.dispatch('modals/modal', true)
+        this.$store.dispatch('modals/selectModal', RequiredLoginModal)
+        return
+      }
+
+      this.user_id = Number(user.user)
       const query = {};
       query['user_id'] = this.user_id;
       query['quantity'] = Number(this.quantity);

@@ -45,6 +45,11 @@ const routes = [
         name: 'Order',
         component: () => import(/* webpackChankName "Order" */ '../views/Order/Order.vue')
       },
+      {
+        path: 'on_order',
+        name: 'OnOrder',
+        component: () => import(/* webpackChankName "OnOrder" */ '../views/Order/OnOrder.vue')
+      },
     ],
   },
 ];

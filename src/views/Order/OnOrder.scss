@@ -1,0 +1,67 @@
+/**
+ * OnOrder
+ */
+
+.on-order {
+  padding-top: 120px;
+
+  &__container {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 20px 0 40px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+  }
+
+  &__card {
+    min-height: 100px;
+    margin: 0 auto;
+    padding: 20px;
+    // background: white;
+    color: white;
+    border-bottom: 1px solid white;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+
+}
+
+table {
+  width: 100%;
+  margin: 40px 0;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid white;
+}
+
+.order-list {
+  &__name {
+    width: 60%;
+  }
+
+  &__total-price {
+    padding: 10px 20px;
+    margin-right: 50px;
+    p {
+      text-align: right;
+    }
+  }
+}
+
+.open {
+  transform: rotate(180deg);
+  transition: all .1s;
+}
