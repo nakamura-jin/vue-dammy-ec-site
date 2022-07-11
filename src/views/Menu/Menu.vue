@@ -49,7 +49,7 @@ export default {
     return {
       hover_index: null,
       keyword: '',
-      genre: 0
+      genre: this.$store.getters['menus/genre']
     }
   },
   /******************************************

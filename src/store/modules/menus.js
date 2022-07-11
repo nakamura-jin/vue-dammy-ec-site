@@ -6,7 +6,8 @@ export default {
    ******************************************/
   state: {
     menus: [],
-    details: {}
+    details: {},
+    genre: 0
   },
 
   /******************************************
@@ -14,7 +15,8 @@ export default {
    ******************************************/
   getters: {
     menus: (state) => state.menus,
-    details: (state) => state.details
+    details: (state) => state.details,
+    genre: (state) => state.genre,
   },
 
   /******************************************
@@ -27,6 +29,10 @@ export default {
 
     DETAILS(state, menu) {
       state.details = menu
+    },
+
+    GENRE(state, id) {
+      state.genre = id
     }
   },
 
@@ -40,6 +46,10 @@ export default {
 
     details({ commit }, menu) {
       commit('DETAILS', menu)
+    },
+
+    genre({ commit }, id) {
+      commit('GENRE', id)
     }
   },
 };

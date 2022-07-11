@@ -60,12 +60,14 @@
 <script>
 import $http from '@/services/httpService'
 import cartMixin from '@/mixins/cartMixin'
+import RequiredLoginModal from '@/components/Modals/RequiredLoginModal.vue'
 
 export default {
   mixins: [ cartMixin ],
   data() {
     return {
-      id: Number(JSON.parse(sessionStorage.getItem('data')).user),
+      // id: Number(JSON.parse(sessionStorage.getItem('data')).user),
+      id: null,
       user: []
     }
   },
@@ -103,6 +105,14 @@ export default {
    ******************************************/
   methods: {
     async getData() {
+      const user = sessionStorage.getItem('data')
+      if(user === null) {
+        this.$store.dispatch('modals/modal', true)
+        this.$store.dispatch('modals/selectModal', RequiredLoginModal)
+        return
+      }
+
+      this.id = Number(JSON.parse(user).user)
       const response = await $http.get(`user/${this.id}`)
       this.user = response.data.user
 
