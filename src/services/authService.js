@@ -34,6 +34,7 @@ class authService {
 
   logout() {
     this.STORAGE.removeItem('data');
+    this.STORAGE.removeItem('path');
     Store.dispatch('loggedIn', false);
   }
 

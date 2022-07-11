@@ -37,6 +37,10 @@ export default {
         }
       })
       state.carts = newCart;
+    },
+
+    ALL_DELETE(state) {
+      state.carts = []
     }
   },
 
@@ -52,6 +56,9 @@ export default {
     },
     deleteCart({ commit }, id) {
       commit('DELETE_CART', id)
+    },
+    allDelete({ commit }) {
+      commit('ALL_DELETE')
     }
   },
 };

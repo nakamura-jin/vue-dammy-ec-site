@@ -11,6 +11,7 @@
         <button class="header__list" @click="$router.push('/order')"><font-awesome-icon class="header__icon" icon="fa-solid fa-mobile-screen-button" /><span>注文する</span></button>
         <button class="header__list" v-if="!loggedIn"><font-awesome-icon class="header__icon" icon="fa-solid fa-id-card" /><span>会員登録</span></button>
         <button class="header__list" v-if="loggedIn" @click="goToCart"><font-awesome-icon class="header__icon" icon="fa-solid fa-cart-shopping" /><span>カート一覧</span></button>
+        <button class="header__list" v-if="loggedIn" @click="$router.push('/on_order')"><font-awesome-icon class="header__icon" icon="fa-solid fa-list" /><span>注文履歴</span></button>
         <button class="header__list" v-if="loggedIn" @click="logout"><font-awesome-icon class="header__icon" icon="fa-solid fa-right-from-bracket" /><span>ログアウト</span></button>
       </div>
     </div>

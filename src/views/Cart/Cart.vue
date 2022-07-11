@@ -30,7 +30,12 @@
           </div>
         </div>
       </div>
-      <button class="cart__order">注文する</button>
+      <button class="cart__order" v-if="carts.length > 0" @click="$router.push('/order')">注文する</button>
+      <template v-else>
+        <div class="cart__no-cart">
+          <p>カートに保存されていません</p>
+        </div>
+      </template>
     </div>
   </div>
 </template>

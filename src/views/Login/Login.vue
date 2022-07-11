@@ -26,7 +26,12 @@
 <script>
 import $auth from '@/services/authService'
 import get from 'lodash/get'
+
 export default {
+  beforeRouteEnter(to, from, next) {
+    sessionStorage.setItem('path', from.path)
+    next()
+  },
   data() {
     return {
       form: {
@@ -34,7 +39,7 @@ export default {
         password: ''
       },
       display: false,
-      error: ''
+      error: '',
     }
   },
   methods: {
@@ -42,7 +47,10 @@ export default {
       const auth = await $auth.login(this.form)
       const result = get(auth, 'data.result', false)
       const error = auth.data.error === "Unauthorized"
-      if(result) this.$router.push('/menu')
+
+      const path = sessionStorage.getItem('path')
+      if(result && path) this.$router.push(`${path}`)
+      else if (result) this.$router.push('/')
       else if (error) this.error = 'メールアドレスまたはパスワードに誤りがあります'
     }
   }
